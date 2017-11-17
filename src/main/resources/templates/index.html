@@ -1,0 +1,80 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CarFinder</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form th:action="@{/cars/search/}" th:object="${list}" method="get">
+    <input type="text" name="date"/>
+    <button type="submit" value="Submit"></button>
+    <a href="/cars/searchpolice">Police cars only</a>
+    <a href="/cars/searchdiplomat">Diplomats only</a>
+</form>
+<span th:if="${!carList.isEmpty()}">
+    <table>
+   <thead>
+       <tr align="left">
+           <th width="60px">Licence plate</th>
+           <th width="60px">Brand</th>
+           <th width="60px">Color</th>
+           <th width="60px">Model</th>
+           <th width="60px">Year</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr th:each="car : ${carList}">
+           <td th:text="${car.plate}"></td>
+           <td th:text="${car.brand}"></td>
+           <td th:text="${car.model}"></td>
+           <td th:text="${car.year}"></td>
+       </tr>
+   </tbody>
+</table>
+</span>
+<span th:if="${!policeCarList.isEmpty()}">
+    <table>
+   <thead>
+       <tr align="left">
+           <th width="60px">Licence plate</th>
+           <th width="60px">Brand</th>
+           <th width="60px">Color</th>
+           <th width="60px">Model</th>
+           <th width="60px">Year</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr th:each="car : ${policeCarList}">
+           <td th:text="${car.plate}"></td>
+           <td th:text="${car.brand}"></td>
+           <td th:text="${car.model}"></td>
+           <td th:text="${car.year}"></td>
+       </tr>
+   </tbody>
+</table>
+</span>
+<span th:if="${!diplomatCarList.isEmpty()}">
+    <table>
+   <thead>
+       <tr align="left">
+           <th width="60px">Licence plate</th>
+           <th width="60px">Brand</th>
+           <th width="60px">Color</th>
+           <th width="60px">Model</th>
+           <th width="60px">Year</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr th:each="car : ${diplomatCarList}">
+           <td th:text="${car.plate}"></td>
+           <td th:text="${car.brand}"></td>
+           <td th:text="${car.model}"></td>
+           <td th:text="${car.year}"></td>
+       </tr>
+   </tbody>
+</table>
+</span>
+
+</body>
+</html>
