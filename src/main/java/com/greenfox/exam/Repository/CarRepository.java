@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CarRepository extends CrudRepository<Car, Long> {
     List<Car> findAllByPlateContaining(String fragment);
+    List<Car> findAllByBrand(String brand);
 }
